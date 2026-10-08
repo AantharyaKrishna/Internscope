@@ -10,8 +10,8 @@ st.set_page_config(
 )
 
 # Load data
-df = pd.read_csv("data/cleaned/gsearch_jobs_cleaned.csv")
-df["date_time"] = pd.to_datetime(df["date_time"])
+df = pd.read_csv("data/app_jobs.csv")
+df["date_time"] = pd.to_datetime(df["year_month"], errors="coerce")
 
 df["skills"] = df["skills"].apply(
     lambda x: ast.literal_eval(x) if isinstance(x, str) else []
